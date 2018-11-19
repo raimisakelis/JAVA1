@@ -12,15 +12,15 @@ public class AverageOfElements {
             int[] data = readFiles(filePath2);
             System.out.println(Arrays.toString(data));
 
-            int sum = 0;
-            for (int j = 0; j < data.length; j++) {
-                sum += data[j];
-            }
+           int sum = 0;
+           for (int j = 0; j < data.length; j++) {
+              sum += data[j];
+          }
 
-            double average = sum / data.length;
+          double average = sum / data.length;
 
-            System.out.println("Masyvo elementu suma: " + sum);
-            System.out.println("Elementu kiekis masyve: " + data.length);
+           System.out.println("Masyvo elementu suma: " + sum);
+          System.out.println("Elementu kiekis masyve: " + data.length);
             System.out.println("Masyvo elementu vidurkis: " + average);
         }
 
