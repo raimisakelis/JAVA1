@@ -58,10 +58,7 @@ public class RemoveItemsSmallerThanAverage {
 
         }
 
-
-        System.out.println(Arrays.toString(smallerData));
-
-
+        System.out.println("Element7, mazesniu uz vidurki, masyvas " + Arrays.toString(smallerData));
 
     }
 

@@ -23,7 +23,6 @@ public class AverageOfElements {
 
                 if (data[j] < 0) {
                     negativeQuantity++;
-
                 }
             }
 
@@ -80,9 +79,6 @@ public class AverageOfElements {
 
             System.out.println("Isrikiuotas pradinis masyvas be neigiamu skaiciu " + Arrays.toString(data));
 
-
-
-
         }
 
 
@@ -115,7 +111,6 @@ public class AverageOfElements {
             }
 
         }
-
 
 
     }
