@@ -9,7 +9,7 @@ public class RemoveItemsSmallerThanAverage {
 
     public static void main (String[] args) throws IOException {
 
-        //tasks 1  - count average
+        //tasks 1  - count average.
 
         String filePath2 = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Lessons\\Lesson4\\res\\txt\\demo\\elementsofarray";
         int[] data = readFiles(filePath2);

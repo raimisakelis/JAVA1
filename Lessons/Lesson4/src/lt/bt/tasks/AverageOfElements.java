@@ -15,7 +15,7 @@ public class AverageOfElements {
             System.out.println("Pradinis masyvas " + Arrays.toString(data));
 
 
-        //how many negative elements are in the array
+        //how many negative elements are in the array.
 
             int negativeQuantity = 0;
 
