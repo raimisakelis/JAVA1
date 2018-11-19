@@ -11,7 +11,7 @@ public class ReadCountAndWrite {
 
     public static void main (String[] args) throws IOException {
 
-        //create new numbers file
+        //create new numbers file.
 
         String filePath = "res\\txt\\demo\\numbersfile.txt";
         File filenumbers = new File(filePath);
