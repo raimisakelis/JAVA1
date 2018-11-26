@@ -3,8 +3,7 @@ package lt.bt.tasks;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import static lt.bt.tasks.Student.getAverage;
-import static lt.bt.tasks.Student.getMissedLessons;
+import static lt.bt.tasks.Student.*;
 import static lt.bt.tasks.Utils.printText;
 
 public class TestStudent {
@@ -62,28 +61,28 @@ public class TestStudent {
         printText("------------------- ");
 
         //student1
-        int average1 = getAverage(student1.getGrades());
+        int average1 = countAverage(student1.getGrades());
         printText(student1.getName() + " " + student1.getLastName() + ". Pazymiu vidurkis - " + average1);
-        int misslessons1 = getMissedLessons(student1.getAttendance());
+        int misslessons1 = countMissedLessons(student1.getAttendance());
         printText(student1.getName() + " " + student1.getLastName() + " praleido " + misslessons1 + " pamokas.");
 
 
         //student2
-        int average2 = getAverage(student2.getGrades());
+        int average2 = countAverage(student2.getGrades());
         printText(student2.getName() + " " + student2.getLastName() + ". Pazymiu vidurkis - " + average2);
-        int misslessons2 = getMissedLessons(student2.getAttendance());
+        int misslessons2 = countMissedLessons(student2.getAttendance());
         printText(student2.getName() + " " + student2.getLastName() + " praleido " + misslessons2 + " pamokas.");
 
         //student3
-        int average3 = getAverage(student3.getGrades());
+        int average3 = countAverage(student3.getGrades());
         printText(student3.getName() + " " + student3.getLastName() + ". Pazymiu vidurkis - " + average3);
-        int misslessons3 = getMissedLessons(student3.getAttendance());
+        int misslessons3 = countMissedLessons(student3.getAttendance());
         printText(student3.getName() + " " + student3.getLastName() + " praleido " + misslessons3 + " pamokas.");
 
         //student4
-        int average4 = getAverage(student4.getGrades());
+        int average4 = countAverage(student4.getGrades());
         printText(student4.getName() + " " + student4.getLastName() + ". Pazymiu vidurkis - " + average4);
-        int misslessons4 = getMissedLessons(student4.getAttendance());
+        int misslessons4 = countMissedLessons(student4.getAttendance());
         printText(student4.getName() + " " + student4.getLastName() + " praleido " + misslessons4 + " pamokas.");
 
 
