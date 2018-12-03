@@ -20,4 +20,16 @@ public class Product {
     public int getItemQuantity() { return itemQuantity; }
     public double[] getItemData() { return itemData; }
 
+
+
+    @Override
+    public String toString() {
+        return itemName + " " + itemCode + " " + itemQuantity + " " + itemPrice;
+    }
+
+
+
+
 }
+
+

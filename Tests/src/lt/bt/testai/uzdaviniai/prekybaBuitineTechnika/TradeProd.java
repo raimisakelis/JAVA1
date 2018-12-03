@@ -33,41 +33,106 @@ public class TradeProd {
 
         //read data from storage file
         String filePath1 = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\data\\Sandelis.txt";
-        TradeProd storage = new TradeProd();
-        Product[] productsArray = storage.readDataStorage(filePath1);
-        System.out.println("Produktu masyvas " + Arrays.toString(productsArray));
+        TradeProd trade = new TradeProd();
+        Product[] storage = trade.readDataStorage(filePath1);
+        System.out.println("Produktu masyvas " + Arrays.toString(storage));
 
         //read data from orders file
         String filePath2 ="C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\data\\Uzsakymai.txt";
-        TradeProd orders = new TradeProd();
-        Product[] ordersArray = orders.readDataOrders(filePath2);
-        System.out.println("Uzsakymu masyvas " + Arrays.toString(ordersArray));
+        Product[] orders = trade.readDataOrders(filePath2);
+        System.out.println("Uzsakymu masyvas " + Arrays.toString(orders));
+
+
+        //get storage balance
+        Product[] balanceOfStorage = trade.calculateBalanceOfStorage(storage, orders);
+        System.out.println("Sandelyje esanciu prekiu balansas " + Arrays.toString(balanceOfStorage));
+
+        //get rest of products in the storage
+        Product[] restProducts = trade.restProductOfStorage(balanceOfStorage);
+        System.out.println("Likutis sandelyje " + Arrays.toString(restProducts));
+
+        //needed products list
+        Product[] neededProducts = trade.misingProduct(balanceOfStorage);
+        System.out.println("Likutis sandelyje " + Arrays.toString(neededProducts));
 
 
 
 
     }
 
-//    public Product[] calculateBalanceOfStorage(Product[] storage, Product[] orders) {
-//        int difference = storage.length - orders.length;
-//        Product[] balance = new Product[difference];
-//        for(int i = 0; i < storage.length; i++) {
-//            for(int j =0; j < orders.length; j++ ) {
-//                if(storage[i].getItemCode() == orders[j].getItemCode()) {
-//                    Product prod = new Product();
-//                    prod.setItemName(storage[i].getItemName());
-//                    int quant = storage[i].getItemQuantity() - orders[j].getItemQuantity();
-//                    prod.setItemQuantity(quant);
-//
-//                    break;
-//                }
-//            }
-//        }
-//
-//
-//
-//        return null;
-//    }
+
+
+
+    public Product[] misingProduct(Product[] balanceOfStorage) {
+        Product[] missing = null;
+        int counter = 0;
+        for(int i = 0; i < balanceOfStorage.length; i ++) {
+            if(balanceOfStorage[i].getItemQuantity() < 0) {
+                int neededQuantity = Math.abs(balanceOfStorage[i].getItemQuantity());
+                balanceOfStorage[i].setItemQuantity(neededQuantity);
+                if (missing == null) {
+                    missing = new Product[1];
+                    missing[0] = balanceOfStorage[i];
+                    counter++;
+
+                } else {
+                    Product[] tmp = new Product[counter + 1];
+                    for(int k = 0; k < counter; k++) {
+                        tmp[k] = missing[k];
+                    }
+                    tmp[counter] = balanceOfStorage[i];
+                    counter++;
+                    missing = tmp;
+                }
+            }
+        }
+        return missing;
+    }
+
+
+
+
+    public Product[] restProductOfStorage(Product[] balanceOfStorage) {
+        Product[] rest = null;
+        int counter = 0;
+        for(int i = 0; i < balanceOfStorage.length; i ++) {
+            if(balanceOfStorage[i].getItemQuantity() > 0) {
+                if (rest == null) {
+                    rest = new Product[1];
+                    rest[0] = balanceOfStorage[i];
+                    counter++;
+
+                } else {
+                    Product[] tmp = new Product[counter + 1];
+                    for(int k = 0; k < counter; k++) {
+                        tmp[k] = rest[k];
+                    }
+                    tmp[counter] = balanceOfStorage[i];
+                    counter++;
+                    rest = tmp;
+                }
+            }
+        }
+        return rest;
+    }
+
+
+
+
+
+    public Product[] calculateBalanceOfStorage(Product[] storage, Product[] orders) {
+        Product[] balance = new Product[storage.length];
+        for(int i = 0; i < storage.length; i++) {
+            for(int j =0; j < orders.length; j++ ) {
+                if(storage[i].getItemCode().equals(orders[j].getItemCode())) {
+                    int quantity = storage[i].getItemQuantity() - orders[j].getItemQuantity();
+                    storage[i].setItemQuantity(quantity);
+                }
+            }
+            balance[i] = storage[i];
+        }
+        return balance;
+    }
 
 
 
@@ -91,18 +156,12 @@ public class TradeProd {
 
 
 
-
-
-
-
-
     public Product[] readDataStorage(String filePath) throws FileNotFoundException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(new FileReader(file));
         int productCount = Integer.parseInt(scanner.nextLine());//with scanner.nextInt() or scanner.next() does not work
         Product[] array = new Product[productCount];
         for(int i = 0; i < productCount; i++){
-            System.out.println("vykdo 2, i reiksme  " + i);
             Product prod = new Product();
             String s = scanner.nextLine();
             String[] part = s.split("(?<=\\D)(?=\\d)");//split specification of product
@@ -121,8 +180,6 @@ public class TradeProd {
         scanner.close();
         return array;
     }
-
-
 
 
 }
