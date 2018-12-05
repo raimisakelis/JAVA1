@@ -1,5 +1,7 @@
 package lt.bt.testai.uzdaviniai.prekybaBuitineTechnika;
 
+import com.sun.deploy.util.StringUtils;
+
 import java.io.*;
 import java.text.NumberFormat;
 import java.util.Arrays;
@@ -9,15 +11,15 @@ import static java.util.Locale.UK;
 
 public class TradeProd {
 
-    private String fileName1 = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\data\\Sandelis.txt";
-    private String fileName2 = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\data\\Uzsakymai.txt";
+
+    private String filePath2 = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\out\\UzsakymaiRez.txt";
     private FileWriter fw = null;
     private BufferedWriter bw = null;
 
-//    protected NumberFormat nf;  {
+//    public static NumberFormat nf;  {
 //        nf = NumberFormat.getNumberInstance(UK);
 //        nf.setMaximumFractionDigits(2);
-//        nf.setMinimumIntegerDigits(1);
+//        nf.setMinimumIntegerDigits(4);
 //    }
 
 
@@ -53,13 +55,80 @@ public class TradeProd {
 
         //needed products list
         Product[] neededProducts = trade.misingProduct(balanceOfStorage);
-        System.out.println("Likutis sandelyje " + Arrays.toString(neededProducts));
+        System.out.println("Technika kuria reikia uzsakyti  " + Arrays.toString(neededProducts));
+
+        //needed products price
+        double productsPrice = trade.calculatePrice(neededProducts);
+        System.out.println("Sumoketi tiekejams " + productsPrice);
+
+        //write to file products of storage
+        trade.saveStorage(restProducts);
 
 
+//        String s = "a.b.c.d m";
+//        int charCount = s.length();
+//
+//        System.out.println("raidziu kiekis " + charCount);
+//
+//
+//        String str = "Hello Word!!";
+//
+//        //StringUtils.leftPad(str, 10)
+//        System.out.println(StringUtils.leftPad(str, 10));
+//
+//        System.out.println(String.format("%1$" + (10 + str.length()) + "s", str));
+//
+//        System.out.println(StringUtils.rightPad(str, 10));
 
 
     }
 
+
+
+
+
+
+    private void saveStorage(Product[] prod) throws IOException{
+        String filePath = "C:\\Program Files (x86)\\Ampps\\www\\JAVA1\\Tests\\src\\lt\\bt\\testai\\uzdaviniai\\prekybaBuitineTechnika\\out\\SandelisRez.txt";
+        fw = new FileWriter(filePath);
+        bw = new BufferedWriter(fw);
+        for(int i = 0; i < prod.length; i++) {
+
+
+
+            bw.write(prod[i].getItemName() + " " + prod[i].getItemCode() + " " + prod[i].getItemQuantity() + " " + prod[i].getItemPrice() + "\n");
+        }
+
+        close();
+    }
+
+
+
+
+    public void close() throws IOException{
+        bw.close();
+        fw.close();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public double calculatePrice(Product[] array) {
+        double sum = 0;
+        for(int i = 0; i < array.length; i++){
+            sum += array[i].getItemPrice() * array[i].getItemQuantity();
+        }
+        return sum;
+    }
 
 
 
@@ -115,8 +184,6 @@ public class TradeProd {
         }
         return rest;
     }
-
-
 
 
 
