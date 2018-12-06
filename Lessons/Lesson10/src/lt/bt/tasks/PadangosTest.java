@@ -3,11 +3,10 @@ package lt.bt.tasks;
 import lt.bt.tasks.data.Padangos;
 
 import java.io.*;
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static java.util.Locale.UK;
+
 
 public class PadangosTest {
 
@@ -15,11 +14,6 @@ public class PadangosTest {
     private FileWriter fw = null;
     private BufferedWriter bw = null;
 
-//    protected NumberFormat nf;  {
-//        nf = NumberFormat.getNumberInstance(UK);
-//        nf.setMaximumFractionDigits(3);
-//        nf.setMinimumIntegerDigits(1);
-//    }
 
     public PadangosTest () throws IOException{
         fw = new FileWriter(fileName);
