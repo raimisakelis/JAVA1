@@ -1,6 +1,7 @@
 package lt.bt.task;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -17,6 +18,29 @@ public class Main {
         listEmpl.add(new Employee("Marija", new Employee.Address("Alytus", "Kryziu g. 7")));
         listEmpl.add(new Employee("Algimantas", new Employee.Address("Alytus", "Pakeles g. 19")));
         listEmpl.add(new Employee("Gabija", new Employee.Address("Kauans", "Alksniu g. 64")));
+
+
+
+        for(Employee employee: listEmpl) {
+            System.out.println(employee);
+        }
+
+
+        Iterator<Employee> iterator = listEmpl.iterator();
+        while (iterator.hasNext()) {
+            Employee s = iterator.next();
+            s.equals(Employee.Address.getAddress())
+
+            if (s.equals("Vilnius") || s.equals("Kaunas")) {
+                iterator.remove();
+            }
+        }
+
+
+
+
+
+
 
 
 

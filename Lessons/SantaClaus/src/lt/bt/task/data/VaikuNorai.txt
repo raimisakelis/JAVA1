@@ -1,0 +1,3 @@
+Mamartas, Mamertauskas, 4, Sodų g. 2 Kaunas, Dideles mašinos
+Linas, Mamermtauskas, 5, Sodų g. 2 Kaunas, Pliušinio meškino
+Gabija, Šakalytė, 30, Kviečių g. 15 Šiauliai, Vaikiškos virtuvės
