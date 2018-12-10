@@ -19,9 +19,8 @@ public class Utils {
 
 
 
-
+    //read data from file: "elf's storage"
     protected static List<Toy> readElfFile(String filePath){
-
         try {
             List<Toy> toys = new ArrayList<Toy>();
             File file = new File(filePath);
@@ -42,13 +41,11 @@ public class Utils {
             System.out.println("Wrong file path or data file format");
             return null;
         }
-
-
     }
 
 
+    //read data from file: "kid character"
     protected static List<Kid> readKidsDesireFile(String filePath){
-
         try {
             List<Kid> kids = new ArrayList<Kid>();
             File file = new File(filePath);
@@ -74,8 +71,9 @@ public class Utils {
         }
     }
 
-    protected static List<Kid> readKidsBehavior(String filePath){
 
+    //read data from file: "kid's desires"
+    protected static List<Kid> readKidsBehavior(String filePath){
         try {
             List<Kid> kids = new ArrayList<Kid>();
             File file = new File(filePath);
