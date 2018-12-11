@@ -1,3 +1,6 @@
 Mamartas, Mamertauskas, 4, Sodų g. 2 Kaunas, Dideles mašinos
 Linas, Mamermtauskas, 5, Sodų g. 2 Kaunas, Pliušinio meškino
 Gabija, Šakalytė, 7, Kviečių g. 15 Šiauliai, Vaikiškos virtuvės
+Jonas, Kubiliunas, 10, Paparciu g. 16 Panevezys, Stalo žaidimas Monopolis
+Petras, Petrauskas, 12, Jonavos g. 125 Kaunas, Dideles mašinos
+Beatrice, Vasiliauskaite, 8, Vytauto g. 4 Marijampole, Dviratis

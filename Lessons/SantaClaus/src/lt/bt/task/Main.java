@@ -4,11 +4,12 @@ import lt.bt.task.data.Kid;
 import lt.bt.task.data.Toy;
 import lt.bt.task.data.ToysWrapper;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
+
+
+    private Toy toy;
 
 
     public static void main(String[] args) {
@@ -63,18 +64,22 @@ public class Main {
 
         ToysWrapper allNeededItems = main.countNeededToysAndCarbon(littleKids, kidCharacter);
 
-        List<Toy> neededToys = allNeededItems.getNeededToy();
+        Map<String,Integer> neededToys = allNeededItems.getToyList();
         Toy neededCarbon = allNeededItems.getNeededCarbon();
 
 
-
-        Iterator<Toy> iterator = neededToys.iterator();
-        while (iterator.hasNext()) {
-            Toy toy = iterator.next();
-            System.out.println(toy.toString());
+        for(String key : neededToys.keySet()){
+            System.out.print(key);
+            System.out.print(" " + neededToys.get(key));
+            System.out.println();
         }
 
+
         System.out.println("Reikes anglies maisu: " + neededCarbon.getCarbonQuantity());
+
+
+
+
 
 
 //        Iterator<Kid> iterator = littleKids.iterator();
@@ -125,23 +130,12 @@ public class Main {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //count needed toys and carbon bags
     private ToysWrapper countNeededToysAndCarbon(List<Kid> littleKids, List<Kid> kidsCharacter) {
         Toy carbon = new Toy();//create carbon bag
         carbon.setToyQuantity(0);
-        List<Toy> neededToys = new ArrayList<>();//create new needed toys list
+        Map<String, Integer> neededToysList = new HashMap<>();
+
         Iterator<Kid> iterator = littleKids.iterator();
         while (iterator.hasNext()) {
             Kid kid = iterator.next();
@@ -154,8 +148,14 @@ public class Main {
                     if (goodKid) {
                         Toy toy = new Toy();
                         toy.setToyName(kid.getKidsDesire().trim());
-                        toy.setToyQuantity(1);
-                        neededToys.add(toy);//add toy to neededToys list
+
+                        //add toy to neededToysList
+                        if( !neededToysList.containsKey( toy.getToyName()) ){
+                            neededToysList.put( toy.getToyName(), 1 );
+                        } else {
+                            neededToysList.put( toy.getToyName(), neededToysList.get( toy.getToyName() ) + 1 );
+                        }
+
                     }
                     else {
                         carbon.setCarbonQuantity(carbon.getCarbonQuantity() + 1);//if kid was bad, add one bag carbon
@@ -164,10 +164,17 @@ public class Main {
             }
         }
         ToysWrapper toysAndCarbon = new ToysWrapper();//create wrapper object
-        toysAndCarbon.setNeededToy(neededToys);//set neededToys list like new object parameter "neededToy"
+        toysAndCarbon.setToyList(neededToysList);//set neededToys list like new object parameter "neededToy"
         toysAndCarbon.setNeededCarbon(carbon);//set carbon like new object parameter "neededCarbon"
         return toysAndCarbon;
     }
+
+
+
+
+
+
+
 
 
     //evaluate the behavior of the child
@@ -205,6 +212,82 @@ public class Main {
         }
         return allKids;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    //count needed toys and carbon bags
+//    private ToysWrapper countNeededToysAndCarbon(List<Kid> littleKids, List<Kid> kidsCharacter) {
+//        Toy carbon = new Toy();//create carbon bag
+//        carbon.setToyQuantity(0);
+//        List<Toy> neededToys = new ArrayList<>();//create new needed toys list
+//        Iterator<Kid> iterator = littleKids.iterator();
+//        while (iterator.hasNext()) {
+//            Kid kid = iterator.next();
+//            Iterator<Kid> iterator2 = kidsCharacter.iterator();
+//            while (iterator2.hasNext()) {
+//                Kid kidChar = iterator2.next();
+//                boolean kidFound = compareKidsName(kid, kidChar);//to find kid
+//                if (kidFound) {
+//                    boolean goodKid = kidsBehavior(kidChar);//check kid's character
+//                    if (goodKid) {
+//                        Toy toy = new Toy();
+//                        toy.setToyName(kid.getKidsDesire().trim());
+//                        toy.setToyQuantity(1);
+//                        neededToys.add(toy);//add toy to neededToys list
+//                    }
+//                    else {
+//                        carbon.setCarbonQuantity(carbon.getCarbonQuantity() + 1);//if kid was bad, add one bag carbon
+//                    }
+//                }
+//            }
+//        }
+//        ToysWrapper toysAndCarbon = new ToysWrapper();//create wrapper object
+//        toysAndCarbon.setNeededToy(neededToys);//set neededToys list like new object parameter "neededToy"
+//        toysAndCarbon.setNeededCarbon(carbon);//set carbon like new object parameter "neededCarbon"
+//        return toysAndCarbon;
+//    }
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

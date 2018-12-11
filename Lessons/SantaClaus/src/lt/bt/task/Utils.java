@@ -100,5 +100,45 @@ public class Utils {
 
 
 
+//    //read data from file: "elf's storage"
+//    protected static List<Toy> readElfFile(String filePath){
+//        try {
+//            List<Toy> toys = new ArrayList<Toy>();
+//            File file = new File(filePath);
+//            Scanner scanner = new Scanner(new FileReader(file));
+//            while (scanner.hasNext()) {
+//                Toy toy = new Toy();
+//                String toyData = scanner.nextLine();
+//                String[] part = toyData.split(",");//split specification of toy
+//                toy.setToyName(part[0]);
+//                toy.setToyQuantity(Integer.parseInt(part[1].trim()));
+//                toys.add(toy);
+//                //System.out.println(toy.getToyName() + " " + toy.getToyQuantity());
+//            }
+//            scanner.close();
+//            return toys;
+//
+//        } catch (Exception e) {
+//            System.out.println("Wrong file path or data file format");
+//            return null;
+//        }
+//    }
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
