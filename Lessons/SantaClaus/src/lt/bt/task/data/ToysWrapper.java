@@ -2,7 +2,7 @@ package lt.bt.task.data;
 
 import java.util.List;
 
-public class ToysWraper {
+public class ToysWrapper {
 
     private List<Toy> neededToy;
     private Toy neededCarbon;

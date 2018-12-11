@@ -4,7 +4,7 @@ public class Toy {
 
     private String toyName;
     private int toyQuantity;
-    private String carbonQuantity;
+    private int carbonQuantity;
 
 
 
@@ -25,11 +25,11 @@ public class Toy {
     }
 
 
-    public String getCarbonQuantity() {
+    public int getCarbonQuantity() {
         return carbonQuantity;
     }
 
-    public void setCarbonQuantity(String carbonQuantity) {
+    public void setCarbonQuantity(int carbonQuantity) {
         this.carbonQuantity = carbonQuantity;
     }
 
