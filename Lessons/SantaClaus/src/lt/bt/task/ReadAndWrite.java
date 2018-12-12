@@ -3,26 +3,20 @@ package lt.bt.task;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public abstract class  ReadAndWrite {
 
-    private String filePath;
-    private List<String> dataList;
 
 
+    public abstract void writeToFile();
 
 
-    public void writeToFile(String filePath){
-        this.filePath = filePath;
-    }
-
-
-    public List<String> readFromFile(String filePath){
-        this.filePath = filePath;
-        this.dataList = dataList;
-        try {
+    public static List<String> readFromFile(String filePath){
+        List<String> dataList = new ArrayList<>();
+       try {
             File file = new File(filePath);
             Scanner scanner = new Scanner(new FileReader(file));
             while (scanner.hasNext()) {
