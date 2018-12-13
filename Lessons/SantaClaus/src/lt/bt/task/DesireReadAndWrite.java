@@ -13,11 +13,11 @@ public class DesireReadAndWrite extends ReadAndWrite {
     private static final int KIDS_AGES = 2;
     private static final int KIDS_ADDRESS = 3;
     private static final int KIDS_DESIRE = 4;
-    private static List<Kid> kidsDesire = new ArrayList<>();
+    private List<Kid> kidsDesire = new ArrayList<>();
 
 
     //read data from file: "VaikuNorai"
-    public static List<Kid> readDesireFile(String filePath){
+    public List<Kid> readDesireFile(String filePath){
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {

@@ -1,6 +1,6 @@
 package lt.bt.task.data;
 
-public enum Case {
+public enum Behavior {
 
     GERAS, BLOGAS, GERA, BLOGA
 

@@ -10,10 +10,10 @@ public class BehaviorRead extends ReadAndWrite{
     private static final int KIDS_NAME = 0;
     private static final int KIDS_LAST_NAME = 1;
     private static final int KIDS_BEHAVIOR = 2;
-    private static List<Kid> kids = new ArrayList<>();
+    private List<Kid> kids = new ArrayList<>();
 
 
-    public static List<Kid> readKidsBehavior(String filePath){
+    public List<Kid> readKidsBehavior(String filePath){
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {

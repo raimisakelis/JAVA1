@@ -1,36 +1,32 @@
 package lt.bt.task;
 
-import lt.bt.task.data.Case;
+import lt.bt.task.data.Behavior;
 import lt.bt.task.data.Kid;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class KidCalc extends Kid {
-
-
+public class CalcKid extends Kid {
 
     //return kid's behavior
-    public static Case behavior(Kid kid) {
-        String behavior = kid.getKidsBehavior().toUpperCase();
-        switch (behavior) {
-            case "GERAS":
-                return Case.GERAS;
-            case "GERA":
-                return Case.GERA;
-            case "BLOGAS":
-                return Case.BLOGAS;
-            case "BLOGA":
-                return Case.BLOGA;
-            default:
-                System.out.println("Senelis nesuprato ar vaikas nusipelno dovanu");
-                return null;
+    public static Behavior convertBehavior (String kidsBehavior){
+        Behavior behavior = null;
+        String kidsBehaviorLower = kidsBehavior.toLowerCase();
+        if(kidsBehaviorLower.equals("geras")){
+            behavior = Behavior.GERAS;
+        } else if(kidsBehaviorLower.equals("gera")){
+            behavior = Behavior.GERA;
+        } else if(kidsBehaviorLower.equals("blogas")){
+            behavior = Behavior.BLOGAS;
+        } else if(kidsBehaviorLower.equals("bloga")){
+            behavior = Behavior.BLOGA;
         }
+        return behavior;
     }
 
 
     //separate kids who are over 15 years old
-    public static List<Kid> separateKids(List<Kid> allKids) {
+    public List<Kid> separateKids(List<Kid> allKids) {
         Iterator<Kid> iterator = allKids.iterator();
         while (iterator.hasNext()) {
             Kid kid = iterator.next();

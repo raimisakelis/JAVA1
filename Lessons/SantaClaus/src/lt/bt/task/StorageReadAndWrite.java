@@ -8,12 +8,12 @@ public class StorageReadAndWrite extends ReadAndWrite{
 
     private static final int TOY_NAME = 0;
     private static final int TOY_QUANTITY = 1;
-    private static Map<String,Integer> neededToysList = new HashMap<>();
+    private Map<String,Integer> neededToysList = new HashMap<>();
 
 
 
     //read data from file: "elf's storage"
-    public static Map<String,Integer> readElfFile(String filePath) {
+    public Map<String,Integer> readElfFile(String filePath) {
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {

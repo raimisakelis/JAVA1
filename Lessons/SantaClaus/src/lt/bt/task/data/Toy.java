@@ -7,6 +7,11 @@ public class Toy {
     private int carbonQuantity;
 
 
+    public Toy(){}
+
+    public Toy(String toyName) {
+        this.toyName = toyName;
+    }
 
     public String getToyName() {
         return toyName;
@@ -24,7 +29,6 @@ public class Toy {
         this.toyQuantity = toyQuantity;
     }
 
-
     public int getCarbonQuantity() {
         return carbonQuantity;
     }
@@ -34,12 +38,10 @@ public class Toy {
     }
 
 
-
     @Override
     public String toString() {
         return getToyName() + " " + getToyQuantity();
     }
-
 
 
 }
