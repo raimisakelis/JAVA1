@@ -3,6 +3,7 @@ package lt.bt.task;
 import lt.bt.task.data.Kid;
 import lt.bt.task.data.Toy;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,10 @@ public class Main {
         List<Kid> littleKids = calcKid.separateKids(allKids);
 
         //calculate needed toys and carbon bags
-        Map<String,Integer> neeedToysAndCarbon= calcToys.countNeededToysAndCarbon(littleKids, behaviorKids);
+        Map<String,Integer> neeedToysAndCarbon = calcToys.countNeededToysAndCarbon(littleKids, behaviorKids);
+
+        //create Santa Claus delivery list
+        List<Kid> deliveryList = calcToys.createDeliveryList(littleKids, behaviorKids);
 
 
 
@@ -62,8 +66,22 @@ public class Main {
         }
 
 
+        //checking
+        System.out.println("-----Senelio pristatymu sarasas-----");
+        Iterator<Kid> iterator = deliveryList.iterator();
+        while (iterator.hasNext()) {
+            Kid kid = iterator.next();
+            System.out.println(kid.toString());
+        }
 
-
+        //forEach example
+        System.out.println("--------forEach---------");
+        elfToys.keySet().forEach(key -> {
+                System.out.print(key);
+                System.out.print(" " + elfToys.get(key));
+                System.out.println();
+                //System.out.println("kyeSet" + elfToys.keySet());
+        });
 
 
 
