@@ -1,7 +1,9 @@
 package lt.bt.task;
 
 
+import lt.bt.task.data.Kid;
 import lt.bt.task.data.Toy;
+
 import java.util.*;
 
 public class StorageReadAndWrite extends ReadAndWrite{
@@ -17,20 +19,12 @@ public class StorageReadAndWrite extends ReadAndWrite{
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {
-            Toy toy = new Toy();
             String toyData = iterator.next();
             String[] part = toyData.split(",");//split specification of toy
-            toy.setToyName(part[TOY_NAME]);
-            toy.setToyQuantity(Integer.parseInt(part[TOY_QUANTITY].trim()));
+            Toy toy = new Toy(part[TOY_NAME], Integer.parseInt(part[TOY_QUANTITY].trim()));
             neededToysList.put(toy.getToyName(), toy.getToyQuantity());
-            //System.out.println(toy.getToyName() + " " + toy.getToyQuantity());
         }
         return neededToysList;
-    }
-
-    @Override
-    public void writeToFile() {
-
     }
 
 

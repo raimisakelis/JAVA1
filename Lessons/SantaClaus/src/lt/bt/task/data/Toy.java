@@ -4,10 +4,15 @@ public class Toy {
 
     private String toyName;
     private int toyQuantity;
-    private int carbonQuantity;
+
 
 
     public Toy(){}
+
+    public Toy(String toyName, int toyQuantity){
+        this.toyName = toyName;
+        this.toyQuantity = toyQuantity;
+    }
 
     public Toy(String toyName) {
         this.toyName = toyName;
@@ -27,14 +32,6 @@ public class Toy {
 
     public void setToyQuantity(int toyQuantity) {
         this.toyQuantity = toyQuantity;
-    }
-
-    public int getCarbonQuantity() {
-        return carbonQuantity;
-    }
-
-    public void setCarbonQuantity(int carbonQuantity) {
-        this.carbonQuantity = carbonQuantity;
     }
 
 

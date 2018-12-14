@@ -59,9 +59,6 @@ public class TestToy {
         Map<String,Integer> test = createOrderList(storage,items);
 
         assertEquals(expected,test);
-
-
-
     }
 
 
@@ -85,9 +82,6 @@ public class TestToy {
         Map<String,Integer> test = createWasteToysList(storage,items);
 
         assertEquals(expected,test);
-
-
-
     }
 
 }

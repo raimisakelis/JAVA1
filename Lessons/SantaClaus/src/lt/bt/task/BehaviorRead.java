@@ -17,22 +17,12 @@ public class BehaviorRead extends ReadAndWrite{
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {
-            Kid kid = new Kid();
             String kidData = iterator.next();
             String[] part = kidData.split(",");//split data about kid
-            kid.setKidsName(part[KIDS_NAME]);
-            kid.setKidsLastName(part[KIDS_LAST_NAME]);
-            kid.setKidsBehavior(part[KIDS_BEHAVIOR]);
+            Kid kid = new Kid(part[KIDS_NAME], part[KIDS_LAST_NAME], part[KIDS_BEHAVIOR]);
             kids.add(kid);
-            //System.out.println(part[0] + " " + part[1] + " " + part[2]);
         }
         return kids;
     }
-
-    @Override
-    public void writeToFile() {
-
-    }
-
 
 }

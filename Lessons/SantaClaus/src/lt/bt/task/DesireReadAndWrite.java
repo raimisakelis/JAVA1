@@ -1,6 +1,10 @@
 package lt.bt.task;
 
 import lt.bt.task.data.Kid;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,23 +25,24 @@ public class DesireReadAndWrite extends ReadAndWrite {
         List<String> initialList = readFromFile(filePath);
         Iterator<String> iterator = initialList.iterator();
         while (iterator.hasNext()) {
-            Kid kid = new Kid();
             String kidData = iterator.next();
             String[] part = kidData.split(",");//split data about kid
-            kid.setKidsName(part[KIDS_NAME]);
-            kid.setKidsLastName(part[KIDS_LAST_NAME]);
-            kid.setKidsAges(Integer.parseInt(part[KIDS_AGES].trim()));
-            kid.setKidsAddress(part[KIDS_ADDRESS]);
-            kid.setKidsDesire(part[KIDS_DESIRE]);
+            Kid kid = new Kid(part[KIDS_NAME], part[KIDS_LAST_NAME], Integer.parseInt(part[KIDS_AGES].trim()), part[KIDS_ADDRESS], part[KIDS_DESIRE]);
             kidsDesire.add(kid);
-            //System.out.println(part[0] + " " + part[1] + " " + part[2] + " " + part[3] + " " + part[4]);
         }
         return kidsDesire;
     }
 
 
-    @Override
-    public void writeToFile() {
-
+    public void writeListToFile(String filePath, List<Kid> ordersList) throws IOException {
+        fw = new FileWriter(filePath);
+        bw = new BufferedWriter(fw);
+        Iterator<Kid> iterator = ordersList.iterator();
+        while (iterator.hasNext()) {
+            Kid kid = iterator.next();
+            bw.write(kid.toString() + "\n");
+        }
+        close();
     }
+
 }

@@ -83,7 +83,7 @@ public class CalcToys {
         return orderList;
     }
 
-    //create toys list, which are not needed
+    //create not needed toys list
     public static Map<String,Integer> createWasteToysList(Map<String,Integer> elfStorageList, Map<String,Integer> neededToysList){
         Map<String,Integer> wasteList = new HashMap<>();
         elfStorageList.keySet().forEach(key ->{

@@ -59,8 +59,27 @@ public class Kid {
     }
 
 
+    public Kid(){}
+
+    public Kid(String kidsName, String kidsLastName, String kidsBehavior){
+        this.kidsName = kidsName;
+        this.kidsLastName = kidsLastName;
+        this.kidsBehavior = kidsBehavior;
+    }
+
+    public Kid(String kidsName, String kidsLastName, int kidsAges, String kidsAddress, String kidsDesire){
+        this.kidsName = kidsName;
+        this.kidsLastName = kidsLastName;
+        this.kidsAges = kidsAges;
+        this.kidsAddress = kidsAddress;
+        this.kidsDesire = kidsDesire;
+    }
+
+
+
+
     @Override
     public String toString() {
-        return getKidsName() + " " + getKidsLastName() + " " + getKidsAges() + " " + getKidsAddress() + " " + getKidsDesire();
+        return getKidsName() + " " + getKidsLastName() + " " + getKidsAddress() + " " + getKidsDesire();
     }
 }
